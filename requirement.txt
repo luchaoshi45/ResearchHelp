@@ -1,2 +1,3 @@
 GitPython
 python-docx
+openai
