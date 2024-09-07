@@ -6,7 +6,16 @@ class Resolve(ABC):
     def __init__(self, repo_url, repo_dir):
         self.repo_url = repo_url
         self.repo_dir = repo_dir
-        self.IGNORE_DIRS = ['.git']
+        self.IGNORE_DIRS = [
+            '.git', '.github', '.dev_scripts', '.circleci',
+            '.idea', '.vscode',  '.venv'
+        ]
+        self.SUPPORT_FILES = [
+            '.py', '.cpp', '.h', '.c', '.java', '.go', '.php', '.rb', '.sh',
+            '.js', '.html', '.css', '.md', '.txt', '.json', '.xml', '.yml',
+            '.ts', '.jsx', '.tsx', '.cs', '.bat', '.ini', '.yaml', '.sql', 
+            '.swift', '.kt', '.rs', '.m', '.pl', '.erl', '.ex', '.exs'
+        ]
         
         self.repo_check()
         self.build_tree()
@@ -25,11 +34,13 @@ class Resolve(ABC):
         for root, dirs, files in os.walk(self.repo_dir):
             for dir in self.IGNORE_DIRS:
                 if dir in dirs:
-                    dirs.remove('.git')
+                    dirs.remove(dir)
                  
             for file in files:
-                file_path = os.path.join(root, file)
-                self.tree[file_path] = ""
+                type = file.split('.')[-1]
+                if '.'+type in self.SUPPORT_FILES:
+                    file_path = os.path.join(root, file)
+                    self.tree[file_path] = ""
 
 if __name__ == "__main__":
     import sys

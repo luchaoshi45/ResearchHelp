@@ -5,7 +5,7 @@ openai.base_url = "https://free.gpt.ge/v1/"
 openai.default_headers = {"x-foo": "true"}
 
 def chatgpt(user_prompt: str) -> str:
-    system_prompt = f"Analyze the following GitHub project README" + \
+    system_prompt = f"Analyze the following project" + \
         "and generate a professional summary and key features of the project."
     
     messages = [

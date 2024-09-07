@@ -14,7 +14,6 @@ class CommonCore(ABC):
     
     def info(self):
         print(50 * "-")
-        print("Running Markdown Core")
         print(f"Repo Remote: {self.resolve.repo_url}")
         print(f"Repo Local Dir: {self.resolve.repo_dir}")
         # print(f"Repo Tree: {self.resolve.tree}")
@@ -23,6 +22,6 @@ class CommonCore(ABC):
         print(f"Output File Name: {self.package.file_name}")
         print(f"File Header: {self.package.COMMON_FILE_HEADER}")
         
-        print(f"Core: {self}")
+        print("\033[95mCore: {}\033[00m".format(self))
             
         print(50 * "-")
