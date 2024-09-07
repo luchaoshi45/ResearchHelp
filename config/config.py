@@ -6,6 +6,9 @@ input_dir = 'input/TigerBalm'
 # input_url = 'https://github.com/luchaoshi45/cloud_storage.git'
 # input_dir = 'input/cloud_storage'
 
+input_url = 'https://github.com/luchaoshi45/ResearchHelp.git'
+input_dir = 'input/ResearchHelp'
+
 # 创建输出目录
 out_dir = "output/"
 out_type = "docx"
