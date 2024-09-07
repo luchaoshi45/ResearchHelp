@@ -1,12 +1,38 @@
-import os
+from core.common_core import CommonCore
+from package.common_file import CommonFile
+from resolve.resolve import Resolve
+from tqdm import tqdm
+import time
 
-def markdwon_core(input_dir, add_file_fun, output_file):
-    # 添加 README 文件内容到 Word 文档
-    readme_path = os.path.join(input_dir, 'README.md')
-    add_file_fun(readme_path, output_file)
-    # 添加其他文件（如 .md 文件、文档文件等）
-    for root, dirs, files in os.walk(input_dir):
-        for file in files:
-            if file.endswith('.md') and file != 'README.md':
-                file_path = os.path.join(root, file)
-                add_file_fun(file_path, output_file)
+class MarkdownCore(CommonCore):
+    def __init__(self, resolve: Resolve, package: CommonFile):
+        super().__init__(resolve, package)
+        self.TYPE = '.md'
+        self.md_file = dict()
+
+    def run(self):
+        self.info()
+        
+        # 收集 Markdown
+        print("\033[92mCollect Markdown File...\033[00m")
+        for key, val in tqdm(self.resolve.tree.items()):
+            print(key + ': ' + val)
+            
+            if key.endswith(self.TYPE):
+                print("\033[91mFound Markdown file: {}\033[00m".format(key))
+                
+                # 读取文件内容
+                with open(key, 'r', encoding='utf-8') as file:
+                    content = file.read()
+                    self.md_file[key] = content
+
+
+        # 写入 Word
+        print("\033[92mWrite Markdown File to Docx...\033[00m")
+        # 添加文件内容到 Word 文档
+        for key, val in tqdm(self.md_file.items()):
+            self.package.add_heading(key, level=2)
+            self.package.add_paragraph(val)
+            
+        # 保存文件
+        self.package.save()
