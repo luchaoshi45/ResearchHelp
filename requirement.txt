@@ -2,3 +2,4 @@ GitPython
 python-docx
 openai
 tqdm
+dashscope
