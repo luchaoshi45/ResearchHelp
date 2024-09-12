@@ -1,4 +1,4 @@
-from config.config import input_url, input_dir, out_dir, out_type, core_type
+from config.config import input_url, input_dir, out_dir, out_type, core_type, core_interface
 from resolve.resolve import Resolve
 from package.docx_file import DocxFile
 from core.markdown_core import MarkdownCore
@@ -15,7 +15,7 @@ if out_type == "docx":
 if core_type == "markdown":
     core = MarkdownCore(resolve, docx_file)
 elif core_type == "ai":
-    core = AiCore(resolve, docx_file, "moonshot")
+    core = AiCore(resolve, docx_file, core_interface)
     
     
 core.run()  # 运行核心

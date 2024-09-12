@@ -10,12 +10,16 @@ class Resolve(ABC):
             '.git', '.github', '.dev_scripts', '.circleci',
             '.idea', '.vscode',  '.venv'
         ]
+        # self.SUPPORT_FILES = [
+        #     '.py', '.cpp', '.h', '.c', '.java', '.go', '.php', '.rb', '.sh',
+        #     '.js', '.html', '.css', '.md', '.txt', '.json', '.xml', '.yml',
+        #     '.ts', '.jsx', '.tsx', '.cs', '.bat', '.ini', '.yaml', '.sql', 
+        #     '.swift', '.kt', '.rs', '.m', '.pl', '.erl', '.ex', '.exs'
+        # ]
         self.SUPPORT_FILES = [
-            '.py', '.cpp', '.h', '.c', '.java', '.go', '.php', '.rb', '.sh',
-            '.js', '.html', '.css', '.md', '.txt', '.json', '.xml', '.yml',
-            '.ts', '.jsx', '.tsx', '.cs', '.bat', '.ini', '.yaml', '.sql', 
-            '.swift', '.kt', '.rs', '.m', '.pl', '.erl', '.ex', '.exs'
+            '.py', '.sh' # only supprot for python project
         ]
+        
         
         self.repo_check()
         self.build_tree()

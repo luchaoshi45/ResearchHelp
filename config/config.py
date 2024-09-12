@@ -9,6 +9,9 @@ input_dir = 'input/TigerBalm'
 input_url = 'https://github.com/luchaoshi45/ResearchHelp.git'
 input_dir = 'input/ResearchHelp'
 
+input_url = 'https://github.com/YaoXinZhi/Bi-LSTM-Attention.git'
+input_dir = 'Bi-LSTM-Attention'
+
 # 创建输出目录
 out_dir = "output/"
 out_type = "docx"
@@ -16,3 +19,4 @@ assert out_type in ["docx"], "Output type not supported"
 
 # 创建核心类型
 core_type = "ai"
+core_interface = "moonshot"

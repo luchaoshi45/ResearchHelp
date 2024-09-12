@@ -22,6 +22,7 @@ class AiCore(CommonCore):
         # 生成文档
         print("\033[92mAI Reasoning...\033[00m")
         user_prompt = self.USER_PROMPT_CMD + str(table_files)
+        print("User Prompt Len: ", len(user_prompt))
         res = self.ai(user_prompt)
         
         # 写入文档
